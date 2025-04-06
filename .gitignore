@@ -1,0 +1,37 @@
+# Git Ignore File
+
+# Environment variables
+.env*
+*.env
+
+# Virtual environment
+venv/
+env/
+*/venv/
+*/env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff
+*.log
+db.sqlite3
+db.sqlite3-journal
+/static/
+/media/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE config files
+.idea/
+.vscode/
+*.swp
