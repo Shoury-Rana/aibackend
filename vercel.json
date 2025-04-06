@@ -1,30 +1,23 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "ai_aggregator/wsgi.py",
-        "use": "@vercel/python",
-        "config": {
-          "maxLambdaSize": "15mb",
-          "runtime": "python3.9"
-        }
-      },
-      {
-          "src": "build_files.sh",
-          "use": "@vercel/static-build",
-          "config": {
-              "distDir": "staticfiles_build"
-          }
+  "version": 2,
+  "builds": [
+    {
+      "src": "ai_aggregator/wsgi.py",  // Point to your WSGI file
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.9"
+        // No explicit build script needed here usually
       }
-    ],
-    "routes": [
-      {
-          "src": "/static/(.*)",
-          "dest": "/static/$1"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "ai_aggregator/wsgi.py"
-      }
-    ]
-  }
+    }
+    // REMOVE the entire @vercel/static-build entry
+  ],
+  "routes": [
+    // Vercel's Python runtime with Whitenoise usually handles static routing automatically.
+    // A simple catch-all route to the WSGI app is often sufficient.
+    {
+      "src": "/(.*)",
+      "dest": "ai_aggregator/wsgi.py"
+    }
+  ]
+}
