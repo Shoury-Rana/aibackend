@@ -3,18 +3,13 @@
 
 echo "BUILD START"
 
-# Ensure pip is up to date (optional but good practice)
-python3.9 -m pip install --upgrade pip
+# Install dependencies (rely on pip being in PATH)
+echo "Installing dependencies..."
+pip install -r requirements.txt
 
-# Install dependencies
-python3.9 -m pip install -r requirements.txt
-
-# Collect static files
-python3.9 manage.py collectstatic --noinput --clear
+# Collect static files (rely on python being in PATH)
+# Using 'python' is often safer as Vercel maps it to the correct version.
+echo "Collecting static files..."
+python manage.py collectstatic --noinput --clear
 
 echo "BUILD END"
-
-# Note: Vercel automatically handles migrations for simple setups if needed,
-# but for complex apps or specific needs, you might add migration commands here.
-# python3.9 manage.py makemigrations --noinput
-# python3.9 manage.py migrate --noinput
